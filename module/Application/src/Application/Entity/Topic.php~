@@ -1,0 +1,91 @@
+<?php
+
+    namespace Application\Entity;
+    
+    use Doctrine\ORM\Mapping as ORM;
+    
+    /**
+     * Topic
+     *
+     * @ORM\Table(name="topic")
+     * @ORM\Entity
+     */
+    class Topic
+    {
+        /**
+         * @var integer
+         *
+         * @ORM\Column(name="id", type="integer", nullable=false)
+         * @ORM\Id
+         * @ORM\GeneratedValue(strategy="IDENTITY")
+         */
+        private $id;
+    
+        /**
+         * @var integer
+         *
+         * @ORM\ManyToOne( targetEntity="Forum", inversedBy="topics" )
+         */
+        private $forum;
+        
+        /**
+         * @ORM\OneToMany( targetEntity="Reaction", mappedBy="topic" )
+         */
+        private $reactions;
+    
+        /**
+         * Get id
+         *
+         * @return integer 
+         */
+        public function getId()
+        {
+            return $this->id;
+        }
+    
+        /**
+         * Set forumId
+         *
+         * @param integer $forumId
+         * @return Topic
+         */
+        public function setForumId($forumId)
+        {
+            $this->forumId = $forumId;
+    
+            return $this;
+        }
+    
+        /**
+         * Get forumId
+         *
+         * @return integer 
+         */
+        public function getForumId()
+        {
+            return $this->forumId;
+        }
+    
+        /**
+         * Set forum
+         *
+         * @param \Application\Entity\Forum $forum
+         * @return Topic
+         */
+        public function setForum(\Application\Entity\Forum $forum = null)
+        {
+            $this->forum = $forum;
+    
+            return $this;
+        }
+    
+        /**
+         * Get forum
+         *
+         * @return \Application\Entity\Forum 
+         */
+        public function getForum()
+        {
+            return $this->forum;
+        }
+    }

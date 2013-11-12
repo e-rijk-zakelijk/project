@@ -65,4 +65,44 @@
         {
             return $this->name;
         }
+        /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->subcategories = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+    /**
+     * Add subcategories
+     *
+     * @param \Application\Entity\Subcategory $subcategories
+     * @return Category
+     */
+    public function addSubcategory(\Application\Entity\Subcategory $subcategories)
+    {
+        $this->subcategories[] = $subcategories;
+
+        return $this;
+    }
+
+    /**
+     * Remove subcategories
+     *
+     * @param \Application\Entity\Subcategory $subcategories
+     */
+    public function removeSubcategory(\Application\Entity\Subcategory $subcategories)
+    {
+        $this->subcategories->removeElement($subcategories);
+    }
+
+    /**
+     * Get subcategories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSubcategories()
+    {
+        return $this->subcategories;
+    }
+}

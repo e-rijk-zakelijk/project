@@ -5,6 +5,10 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'Application',
+        'ZfcBase',
+        'ZfcUser',
+        'ZfcUserDoctrineORM',
+//         'BjyAuthorize'
     ),
     'module_listener_options' => array(
         'config_glob_paths'    => array(
