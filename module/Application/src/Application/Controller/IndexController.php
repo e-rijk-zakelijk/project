@@ -10,7 +10,9 @@
         public function indexAction()
         {
             $oEntityManager = $this->getServiceLocator()->get( 'Doctrine\ORM\EntityManager' );
+            
             $oCategory = $oEntityManager->find( 'Application\Entity\Category', 1 );
+            
             
             foreach( $oCategory->getSubcategories() as $aSubcategory )
             {
