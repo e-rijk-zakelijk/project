@@ -1,0 +1,23 @@
+<?php
+
+    use Zend\Form\Element\Submit;
+    
+    echo '<h1>' . $this->translate( 'topic_add' ) . '</h1>';
+
+    $oForm = $this->oForm;
+    $oForm->setAttribute( 'action', $this->url(
+        'application',
+        array(
+            'action'    => 'add',
+        )
+    ) );
+    $oForm->prepare();
+    
+    $oSubmit = new Submit();
+    $oSubmit->setName( 'submit')
+            ->setValue( 'submit' );
+    
+    echo $this->form()->openTag( $oForm );
+    echo $this->formCollection( $oForm );
+    echo $this->formelement( $oSubmit );
+    echo $this->form()->closeTag();

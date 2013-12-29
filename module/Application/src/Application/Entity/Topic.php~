@@ -20,6 +20,13 @@
          * @ORM\GeneratedValue(strategy="IDENTITY")
          */
         private $id;
+        
+        /**
+         * @var integer
+         *
+         * @ORM\Column(name="account_id", type="integer", nullable=false)
+         */
+        private $accountId;
     
         /**
          * @var integer
@@ -42,30 +49,7 @@
         {
             return $this->id;
         }
-    
-        /**
-         * Set forumId
-         *
-         * @param integer $forumId
-         * @return Topic
-         */
-        public function setForumId($forumId)
-        {
-            $this->forumId = $forumId;
-    
-            return $this;
-        }
-    
-        /**
-         * Get forumId
-         *
-         * @return integer 
-         */
-        public function getForumId()
-        {
-            return $this->forumId;
-        }
-    
+
         /**
          * Set forum
          *
@@ -87,5 +71,46 @@
         public function getForum()
         {
             return $this->forum;
+        }
+        
+        /**
+         * Constructor
+         */
+        public function __construct()
+        {
+            $this->reactions = new \Doctrine\Common\Collections\ArrayCollection();
+        }
+    
+        /**
+         * Add reactions
+         *
+         * @param \Application\Entity\Reaction $reactions
+         * @return Topic
+         */
+        public function addReaction(\Application\Entity\Reaction $reactions)
+        {
+            $this->reactions[] = $reactions;
+    
+            return $this;
+        }
+    
+        /**
+         * Remove reactions
+         *
+         * @param \Application\Entity\Reaction $reactions
+         */
+        public function removeReaction(\Application\Entity\Reaction $reactions)
+        {
+            $this->reactions->removeElement($reactions);
+        }
+    
+        /**
+         * Get reactions
+         *
+         * @return \Doctrine\Common\Collections\Collection 
+         */
+        public function getReactions()
+        {
+            return $this->reactions;
         }
     }

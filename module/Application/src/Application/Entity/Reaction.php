@@ -20,12 +20,19 @@
          * @ORM\GeneratedValue(strategy="IDENTITY")
          */
         private $id;
+        
+        /**
+         * @var integer
+         *
+         * @ORM\Column(name="account_id", type="integer", nullable=false)
+         */
+        private $accountId;
     
         /**
          * @ORM\ManyToOne( targetEntity="Topic", inversedBy="reactions" )
          */
         private $topic;
-    
+
         /**
          * Get id
          *
@@ -58,4 +65,27 @@
         {
             return $this->topic;
         }
+    
+    /**
+     * Set accountId
+     *
+     * @param integer $accountId
+     * @return Reaction
+     */
+    public function setAccountId($accountId)
+    {
+        $this->accountId = $accountId;
+
+        return $this;
     }
+
+    /**
+     * Get accountId
+     *
+     * @return integer 
+     */
+    public function getAccountId()
+    {
+        return $this->accountId;
+    }
+}

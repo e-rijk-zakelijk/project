@@ -1,0 +1,19 @@
+<?php
+
+    use Zend\Form\Element\Submit;
+use Zend\Form\View\Helper\FormRow;
+    
+    echo '<h1>' . $this->translate( 'topic_add' ) . '</h1>';
+    
+    $oForm = $this->oForm;
+    $oForm->prepare();
+    
+    $oSubmit = new Submit();
+    $oSubmit->setName( 'submit')
+            ->setValue( 'submit' );
+    
+    echo $this->form()->openTag( $oForm );
+    echo $this->formrow( $oForm->get( 'title' ) );
+    echo $this->formrow( $oForm->get( 'message' ) );
+    echo $this->formrow( $oSubmit );
+    echo $this->form()->closeTag();
