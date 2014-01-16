@@ -64,10 +64,10 @@ class Forum extends \Application\Entity\Forum implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'topics');
+            return array('__isInitialized__', 'id', 'name', 'topics');
         }
 
-        return array('__isInitialized__', 'id', 'topics');
+        return array('__isInitialized__', 'id', 'name', 'topics');
     }
 
     /**
@@ -186,6 +186,28 @@ class Forum extends \Application\Entity\Forum implements \Doctrine\ORM\Proxy\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
 
         return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setName($name)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', array($name));
+
+        return parent::setName($name);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getName()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', array());
+
+        return parent::getName();
     }
 
     /**

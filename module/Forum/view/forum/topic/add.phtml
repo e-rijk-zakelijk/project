@@ -1,19 +1,28 @@
 <?php
 
     use Zend\Form\Element\Submit;
-use Zend\Form\View\Helper\FormRow;
-    
+    use Zend\Form\Element\Select;
+
     echo '<h1>' . $this->translate( 'topic_add' ) . '</h1>';
     
     $oForm = $this->oForm;
     $oForm->prepare();
     
+    $oForums = new Select();
+    $oForums->setName( 'forums' )
+            ->setLabel( 'Forum' )
+            ->setValueOptions( $this->aForums );
+    
     $oSubmit = new Submit();
     $oSubmit->setName( 'submit')
-            ->setValue( 'submit' );
+            ->setValue( 'submit' )
+            ->setLabel( ' ' );
     
     echo $this->form()->openTag( $oForm );
+    echo $this->formrow( $oForm->get( 'stick' ) );
+    echo $this->formrow( $oForums );
     echo $this->formrow( $oForm->get( 'title' ) );
     echo $this->formrow( $oForm->get( 'message' ) );
+    echo '<script type="text/javascript">$(\'#message\').wysihtml5();</script>';
     echo $this->formrow( $oSubmit );
     echo $this->form()->closeTag();

@@ -7,8 +7,18 @@
 
         <?php echo $this->headMeta()->appendName( 'viewport', 'width=device-width, initial-scale=1.0' ); ?>
         
+        <?php echo $this->headscript()
+                        ->appendFile( $this->basepath() . '/js/jquery-1.7.1.min.js' )
+                        ->appendFile( $this->basepath() . '/js/wysihtml5-0.3.0_rc2.js' )
+                        ->appendFile( $this->basepath() . '/js/bootstrap.min.js' )
+                        ->appendFile( $this->basepath() . '/js/bootstrap-wysihtml5-0.0.2.js' ); 
+        ?>
+        
         <?php echo $this->headLink()
-                        ->prependStylesheet( $this->basePath() . '/css/style.css' );
+                        ->prependStylesheet( $this->basepath() . '/css/bootstrap.min.css' )
+                        ->prependStylesheet( $this->basepath() . '/css/bootstrap-wysihtml5-0.0.2.css' )
+                        ->prependStylesheet( $this->basePath() . '/css/style.css' )
+                        ->prependStylesheet( $this->basePath() . '/css/form.css' );
         ?>
     </head>
     <body>

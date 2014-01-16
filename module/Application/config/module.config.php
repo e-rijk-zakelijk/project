@@ -6,7 +6,7 @@
                 'application' => array(
                     'type'    => 'Literal',
                     'options' => array(
-                        'route'    => '/application[/:action]',
+                        'route'    => '/application',
                         'defaults' => array(
                             '__NAMESPACE__' => 'Application\Controller',
                             'controller'    => 'Index',

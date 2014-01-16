@@ -6,7 +6,8 @@
             'DoctrineModule',
             'DoctrineORMModule',
             'Application',
-            'Forum'
+            'Forum',
+            'Scripts'
         ),
         'module_listener_options' => array(
             'config_glob_paths'    => array(

@@ -5,3 +5,8 @@
 	font-family: Verdana;
 	font-size: 11px;
 }
+
+iframe
+{
+	width: 452px !important;
+}

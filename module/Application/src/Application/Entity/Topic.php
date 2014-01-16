@@ -9,7 +9,7 @@
      * Topic
      *
      * @ORM\Table(name="topic")
-     * @ORM\Entity
+     * @ORM\Entity(repositoryClass="Application\Repository\TopicRepository")
      * 
      * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ObjectProperty")
      * @Annotation\Name("Topic")
@@ -35,6 +35,16 @@
         private $accountId;
         
         /**
+         * @var boolean
+         *
+         * @ORM\Column(name="stick", type="boolean", nullable=true)
+         * 
+         * @Annotation\Type("Zend\Form\Element\Checkbox")
+         * @Annotation\Options({"label":"Stick:"})
+         */
+        private $stick;
+        
+        /**
          * @var string
          *
          * @ORM\Column(name="title", type="string", nullable=false)
@@ -54,9 +64,9 @@
          *
          * @Annotation\Type("Zend\Form\Element\Textarea")
          * @Annotation\Required({"required":"true" })
-         * @Annotation\Filter({"name":"StripTags"})
          * @Annotation\Validator({"name":"StringLength", "options":{"min":"1"}})
          * @Annotation\Options({"label":"Message:"})
+         * @Annotation\Attributes({"id":"message", "placeholder":"Plaats uw reactie..", "rows":"8"})
          */
         private $message;
     
@@ -167,6 +177,29 @@
         public function getAccountId()
         {
             return $this->accountId;
+        }
+        
+        /**
+         * Set title
+         *
+         * @param varchar $title
+         * @return Topic
+         */
+        public function setStick($stick)
+        {
+        	$this->stick = $stick;
+        
+        	return $this;
+        }
+        
+        /**
+         * Get accountId
+         *
+         * @return integer
+         */
+        public function getStick()
+        {
+        	return $this->stick;
         }
         
         /**

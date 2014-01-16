@@ -1,0 +1,19 @@
+<?php
+
+    use Zend\Form\Element\Submit;
+
+    echo '<h1>' . $this->translate( 'scripts_add' ) . '</h1>';
+
+    $oForm = $this->oForm;
+    $oForm->prepare();
+
+    $oSubmit = new Submit();
+    $oSubmit->setName( 'submit')
+    ->setValue( 'submit' )
+    ->setLabel( ' ' );
+    
+    echo $this->form()->openTag( $oForm );
+    echo $this->formrow( $oForm->get( 'title' ) );
+    echo $this->formrow( $oForm->get( 'content' ) );
+    echo $this->formrow( $oSubmit );
+    echo $this->form()->closeTag();
