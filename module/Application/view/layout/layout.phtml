@@ -15,13 +15,39 @@
         ?>
         
         <?php echo $this->headLink()
+                        ->prependStylesheet( $this->basePath() . '/css/form.css' )
                         ->prependStylesheet( $this->basepath() . '/css/bootstrap.min.css' )
                         ->prependStylesheet( $this->basepath() . '/css/bootstrap-wysihtml5-0.0.2.css' )
-                        ->prependStylesheet( $this->basePath() . '/css/style.css' )
-                        ->prependStylesheet( $this->basePath() . '/css/form.css' );
+                        ->prependStylesheet( $this->basePath() . '/css/style.css' );
         ?>
     </head>
     <body>
-        <?php echo $this->content; ?>
+        <div class="leftMenu">
+            <div class="search">
+                <input type="text" name="search" id="search" value="" style="width: 210px; border-radius: 18px; padding: 3px 10px; margin-bottom: 1px;" />
+            </div>
+            <ul>
+                <li><a href=""><span class="glyphicon glyphicon-dashboard"></span>Dashboard</a></li>
+                <li><a class="active" href="<?php echo $this->url( 'forum' ); ?>">Forum</a></li>
+                <li><a href="<?php echo $this->url( 'scripts' ); ?>">Scripts</a>
+                    <ul>
+                        <li><a href="">Overzicht</a></li>
+                        <li><a href="">Add</a></li>
+                    </ul>
+                </li>
+                <li><a href="">Tutorials</a>
+                    <ul>
+                        <li><a href="">Overzicht</a></li>
+                        <li><a href="">Add</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="contentTop">&nbsp;</div>
+            <div class="contentContainer">
+                <?php echo $this->content; ?>
+            </div>
+        </div>
     </body>
 </html>

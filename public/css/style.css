@@ -6,6 +6,67 @@
 	font-size: 11px;
 }
 
+.leftMenu
+{
+	width: 250px;
+	float: left;
+	height: 600px;
+	background-color: #2A2C33;
+}
+
+.leftMenu ul
+{
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.leftMenu > ul > li > a
+{
+	background: -moz-linear-gradient( top, #42434C, #3A373F );
+	padding: 10px;
+	color: #FFF;
+	display: block;
+	text-decoration: none;
+}
+
+.leftMenu > ul > li > a.active
+{
+	background: -moz-linear-gradient( left, #1A8EC5, #24CCDE );
+}
+
+.leftMenu > ul > li > ul > li > a
+{
+	background-color: #23252A;
+	padding: 5px 0 5px 20px;
+	display: block;
+	color: #FFF;
+	border-bottom: 1px solid #3A373F;
+	text-decoration: none;
+}
+
+.contentTop
+{
+	background-color: #41424B;
+	height: 47px;
+}
+
+.search
+{
+	padding: 10px;
+	background-color: #41424B;
+}
+
+.content
+{
+	float: left;
+}
+
+.contentContainer
+{
+	padding: 10px;
+}
+
 iframe
 {
 	width: 452px !important;

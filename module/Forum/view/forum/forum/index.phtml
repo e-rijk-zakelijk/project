@@ -2,4 +2,11 @@
 
     echo '<h1>' . $this->translate( 'forum_index' ) . '</h1>';
     
-    
+    foreach( $this->oFora as $oForum )
+    {
+    	echo '
+            <div style="margin-bottom: 10px; border: 1px solid red;">
+                ' . $oForum->getName() . '
+            </div>
+        ';
+    }
