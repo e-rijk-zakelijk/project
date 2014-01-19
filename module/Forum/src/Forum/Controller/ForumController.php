@@ -14,8 +14,6 @@
             
             foreach( $oFora as $oForum )
             {
-                echo count( $oForum->getTopics() );die;
-                
                 foreach( $oForum->getTopics() as $aTopic )
                 {
                     \Doctrine\Common\Util\Debug::dump( $aTopic );die();

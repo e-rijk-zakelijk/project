@@ -45,7 +45,7 @@
             );
         }
         
-        public function updateAction()
+        public function editAction()
         {
             
         }

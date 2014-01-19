@@ -8,15 +8,16 @@
     {
         const TOPIC_FETCH_LIMIT = 10;
         
-        public function fetchLatestsTopics()
+        public function fetchLatestsTopics( $iForumId )
         {
-            $sQuery = '
-                SELECT t 
-                FROM Application\Entity\Topic t
-            ';
+            $sQuery = "
+                SELECT    t 
+                FROM      Application\Entity\Topic t
+                WHERE     t.forum = '" . $iForumId . "'
+            ";
             $oQuery = $this->_em->createQuery( $sQuery );
             $oQuery->setMaxResults( self::TOPIC_FETCH_LIMIT );
 
-            \Doctrine\Common\Util\Debug::dump( $oQuery->getResult() );
+            return $oQuery->getResult();
         }
     }

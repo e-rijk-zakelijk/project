@@ -2,4 +2,25 @@
 
     echo '<h1>' . $this->translate( 'topic_index' ) . '</h1>';
 
+    foreach( $this->oTopics as $oTopic )
+    {
+        echo '
+            <div>
+                ' . $oTopic->getTitle() . '
+            </div>
+            <div>
+                ' . $oTopic->getMessage() . '
+            </div>
+        ';
+        
+        foreach( $oTopic->getReactions() as $oReaction )
+        {
+            echo '
+                <div>
+                    ' . $oReaction->getContent() . '
+                </div>
+            ';
+        }
+    }
+    
 ?>

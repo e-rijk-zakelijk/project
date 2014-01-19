@@ -26,6 +26,16 @@
         private $id;
         
         /**
+         * @ORM\Column(name="account_id", type="integer", nullable=false)
+         */
+        private $accountId;
+        
+        /**
+         * @ORM\Column(name="category_id", type="integer", nullable=false)
+         */
+        private $categoryId;
+        
+        /**
          * @var string
          *
          * @ORM\Column(name="name", type="string", nullable=false)
@@ -115,5 +125,51 @@
         public function getTopics()
         {
             return $this->topics;
+        }
+    
+        /**
+         * Set accountId
+         *
+         * @param integer $accountId
+         * @return Forum
+         */
+        public function setAccountId($accountId)
+        {
+            $this->accountId = $accountId;
+    
+            return $this;
+        }
+    
+        /**
+         * Get accountId
+         *
+         * @return integer 
+         */
+        public function getAccountId()
+        {
+            return $this->accountId;
+        }
+    
+        /**
+         * Set categoryId
+         *
+         * @param integer $categoryId
+         * @return Forum
+         */
+        public function setCategoryId($categoryId)
+        {
+            $this->categoryId = $categoryId;
+    
+            return $this;
+        }
+    
+        /**
+         * Get categoryId
+         *
+         * @return integer 
+         */
+        public function getCategoryId()
+        {
+            return $this->categoryId;
         }
     }

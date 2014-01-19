@@ -64,10 +64,10 @@ class Forum extends \Application\Entity\Forum implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'name', 'topics');
+            return array('__isInitialized__', 'id', 'accountId', 'name', 'topics');
         }
 
-        return array('__isInitialized__', 'id', 'name', 'topics');
+        return array('__isInitialized__', 'id', 'accountId', 'name', 'topics');
     }
 
     /**
@@ -241,6 +241,28 @@ class Forum extends \Application\Entity\Forum implements \Doctrine\ORM\Proxy\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTopics', array());
 
         return parent::getTopics();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAccountId($accountId)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAccountId', array($accountId));
+
+        return parent::setAccountId($accountId);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAccountId()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAccountId', array());
+
+        return parent::getAccountId();
     }
 
 }

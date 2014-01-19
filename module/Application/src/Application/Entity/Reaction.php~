@@ -27,6 +27,11 @@
          * @ORM\Column(name="account_id", type="integer", nullable=false)
          */
         private $accountId;
+        
+        /**
+         * @ORM\Column(name="content", type="text", nullable=false)
+         */
+        private $content;
     
         /**
          * @ORM\ManyToOne( targetEntity="Topic", inversedBy="reactions" )
@@ -64,5 +69,28 @@
         public function getTopic()
         {
             return $this->topic;
+        }
+    
+        /**
+         * Set accountId
+         *
+         * @param integer $accountId
+         * @return Reaction
+         */
+        public function setAccountId($accountId)
+        {
+            $this->accountId = $accountId;
+    
+            return $this;
+        }
+    
+        /**
+         * Get accountId
+         *
+         * @return integer 
+         */
+        public function getAccountId()
+        {
+            return $this->accountId;
         }
     }

@@ -5,6 +5,10 @@
             'ZendDeveloperTools',
             'DoctrineModule',
             'DoctrineORMModule',
+            'ZfcBase',
+            'ZfcUser',
+            'ZfcUserDoctrineORM',
+            'BjyAuthorize',
             'Application',
             'Forum',
             'Scripts'

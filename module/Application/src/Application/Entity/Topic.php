@@ -69,6 +69,13 @@
          * @Annotation\Attributes({"id":"message", "placeholder":"Plaats uw reactie..", "rows":"8"})
          */
         private $message;
+        
+        /**
+         * @ORM\Column(name="date_added", type="datetime", nullable=false)
+         * 
+         * @Annotation\Exclude()
+         */
+        private $dateAdded;
     
         /**
          * @var integer
@@ -80,7 +87,7 @@
         /**
          * @ORM\OneToMany( targetEntity="Reaction", mappedBy="topic" )
          */
-//         private $reactions;
+        private $reactions;
 
         /**
          * Get id
@@ -246,5 +253,28 @@
         public function getMessage()
         {
         	return $this->message;
+        }
+    
+        /**
+         * Set dateAdded
+         *
+         * @param \DateTime $dateAdded
+         * @return Topic
+         */
+        public function setDateAdded($dateAdded)
+        {
+            $this->dateAdded = $dateAdded;
+    
+            return $this;
+        }
+    
+        /**
+         * Get dateAdded
+         *
+         * @return \DateTime 
+         */
+        public function getDateAdded()
+        {
+            return $this->dateAdded;
         }
     }

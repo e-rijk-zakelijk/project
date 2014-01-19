@@ -13,9 +13,13 @@
         {
             $oObjectManager = $this->getServiceLocator()->get( 'Doctrine\ORM\EntityManager' );
             
-            $oObjectManager->getRepository( 'Application\Entity\Topic' )->fetchLatestsTopics();
+            $iForumId = $this->getEvent()->getRouteMatch()->getParam( 'id' );
+            
+            $oTopics = $oObjectManager->getRepository( 'Application\Entity\Topic' )->fetchLatestsTopics( $iForumId );
 
-            return array();
+            return array(
+                'oTopics' => $oTopics
+            );
         }
 
         public function addAction()
@@ -52,6 +56,7 @@
                         $iForumId = $oRequest->getPost( 'forums' );
                     }
                     $oTopic->setForum( $oObjectManager->find( 'Application\Entity\Forum', $iForumId ) );
+                    $oTopic->setDateAdded( new \DateTime( 'now' ) );
 
                     $oObjectManager->persist( $oTopic );
                     $oObjectManager->flush();

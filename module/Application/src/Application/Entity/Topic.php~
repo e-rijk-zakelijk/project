@@ -3,12 +3,16 @@
     namespace Application\Entity;
     
     use Doctrine\ORM\Mapping as ORM;
+    use Zend\Form\Annotation;
     
     /**
      * Topic
      *
      * @ORM\Table(name="topic")
-     * @ORM\Entity
+     * @ORM\Entity(repositoryClass="Application\Repository\TopicRepository")
+     * 
+     * @Annotation\Hydrator("Zend\Stdlib\Hydrator\ObjectProperty")
+     * @Annotation\Name("Topic")
      */
     class Topic
     {
@@ -18,15 +22,60 @@
          * @ORM\Column(name="id", type="integer", nullable=false)
          * @ORM\Id
          * @ORM\GeneratedValue(strategy="IDENTITY")
+         * 
+         * @Annotation\Exclude()
          */
         private $id;
         
         /**
          * @var integer
          *
-         * @ORM\Column(name="account_id", type="integer", nullable=false)
+         * @ORM\Column(name="account_id", type="integer", nullable=true)
          */
         private $accountId;
+        
+        /**
+         * @var boolean
+         *
+         * @ORM\Column(name="stick", type="boolean", nullable=true)
+         * 
+         * @Annotation\Type("Zend\Form\Element\Checkbox")
+         * @Annotation\Options({"label":"Stick:"})
+         */
+        private $stick;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="title", type="string", nullable=false)
+         * 
+         * @Annotation\Type("Zend\Form\Element\Text")
+         * @Annotation\Required({"required":"true" })
+         * @Annotation\Filter({"name":"StripTags"})
+         * @Annotation\Validator({"name":"StringLength", "options":{"min":"1"}})
+         * @Annotation\Options({"label":"Title:"})
+         */
+        private $title;
+        
+        /**
+         * @var string
+         *
+         * @ORM\Column(name="message", type="string", nullable=false)
+         *
+         * @Annotation\Type("Zend\Form\Element\Textarea")
+         * @Annotation\Required({"required":"true" })
+         * @Annotation\Validator({"name":"StringLength", "options":{"min":"1"}})
+         * @Annotation\Options({"label":"Message:"})
+         * @Annotation\Attributes({"id":"message", "placeholder":"Plaats uw reactie..", "rows":"8"})
+         */
+        private $message;
+        
+        /**
+         * @ORM\Column(name="date_added", type="datetime", nullable=false)
+         * 
+         * @Annotation\Exclude()
+         */
+        private $dateAdded;
     
         /**
          * @var integer
@@ -39,7 +88,7 @@
          * @ORM\OneToMany( targetEntity="Reaction", mappedBy="topic" )
          */
         private $reactions;
-    
+
         /**
          * Get id
          *
@@ -112,5 +161,120 @@
         public function getReactions()
         {
             return $this->reactions;
+        }
+    
+        /**
+         * Set accountId
+         *
+         * @param integer $accountId
+         * @return Topic
+         */
+        public function setAccountId($accountId)
+        {
+            $this->accountId = $accountId;
+    
+            return $this;
+        }
+    
+        /**
+         * Get accountId
+         *
+         * @return integer 
+         */
+        public function getAccountId()
+        {
+            return $this->accountId;
+        }
+        
+        /**
+         * Set title
+         *
+         * @param varchar $title
+         * @return Topic
+         */
+        public function setStick($stick)
+        {
+        	$this->stick = $stick;
+        
+        	return $this;
+        }
+        
+        /**
+         * Get accountId
+         *
+         * @return integer
+         */
+        public function getStick()
+        {
+        	return $this->stick;
+        }
+        
+        /**
+         * Set title
+         *
+         * @param varchar $title
+         * @return Topic
+         */
+        public function setTitle($title)
+        {
+        	$this->title = $title;
+        
+        	return $this;
+        }
+        
+        /**
+         * Get accountId
+         *
+         * @return integer
+         */
+        public function getTitle()
+        {
+        	return $this->title;
+        }
+        
+        /**
+         * Set title
+         *
+         * @param varchar $title
+         * @return Topic
+         */
+        public function setMessage($message)
+        {
+        	$this->message = $message;
+        
+        	return $this;
+        }
+        
+        /**
+         * Get accountId
+         *
+         * @return integer
+         */
+        public function getMessage()
+        {
+        	return $this->message;
+        }
+    
+        /**
+         * Set dateAdded
+         *
+         * @param \DateTime $dateAdded
+         * @return Topic
+         */
+        public function setDateAdded($dateAdded)
+        {
+            $this->dateAdded = $dateAdded;
+    
+            return $this;
+        }
+    
+        /**
+         * Get dateAdded
+         *
+         * @return \DateTime 
+         */
+        public function getDateAdded()
+        {
+            return $this->dateAdded;
         }
     }
